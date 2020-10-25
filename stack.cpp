@@ -1,70 +1,68 @@
-#include<bits/stdc++.h>
+#include<iostream>
 
 using namespace std;
 
-#define mx 3
+#define max_size 2
 
 struct st{
+    int data[max_size];
     int top;
-    int data[mx];
 };
 
-void push(st *str, int data)
+void push(struct st *stack ,int data)
 {
-    if(str->top == mx)
+    if(stack->top > max_size-1)
     {
-        cout << "stack is full" << endl;
-        return;
+       cout << "stack is full" << endl;
+       return;
     }
-    str->data[str->top++] = data;
+
+    cout << stack->top << endl;
+
+    stack->data[stack->top] = data;
+    stack->top++;
 }
 
-int pop(st *str)
+int pop(struct st *stack)
 {
-    if(str->top == 0)
+    if(stack->top == 0)
     {
-        cout << "stack is empty"<< endl;
-        return -1;
+        cout << "stack is empty " << endl;
+        exit(1);
     }
 
-    str->top--;
-    return str->data[str->top];
-}
+    int item;
+    stack->top--;
+    item = stack->data[stack->top];
 
-int top(st *str)
-{
-    if(str->top == 0)
-    {
-        cout << "stack is empty"<< endl;
-        return -1;
-    }
-
-    return str->data[str->top];
+    return item;
 }
 
 int main()
 {
 
-    st arg;
+    struct st arg;
 
     arg.top = 0;
 
     push(&arg, 5);
     push(&arg, 15);
     push(&arg, 25);
-    push(&arg, 35);
 
-    int p;
+    int item;
 
-    p = pop(&arg);
-    cout << p << endl;
-     p = pop(&arg);
-    cout << p << endl;
-     p = pop(&arg);
-    cout << p << endl;
+   item = pop(&arg);
+   cout << item << endl;
 
-    p = pop(&arg);
-    cout << p << endl;
+      item = pop(&arg);
+   cout << item << endl;
+
+      item = pop(&arg);
+   cout << item << endl;
+
+      item = pop(&arg);
+   cout << item << endl;
+
 
 
     return 0;

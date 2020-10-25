@@ -1,30 +1,39 @@
-#include<bits/stdc++.h>
+#include<iostream>
 
 using namespace std;
 
-int main() {
-    int arr[100];
+int main()
+{
+   int n;
 
-    int n, temp;
-    cin >> n;
+   cin >> n;
 
-    for(int i =0; i < n; i++) {
-       cin >> arr[i];
-    }
+   int *arg = (int*) malloc(n*sizeof(int));
 
-    for(int i = 0; i < n; i++) {
-      for(int j = 0; j < n - 1; j ++) {
-          if(arr[j] > arr[j+1]) {
-             temp = arr[j];
-             arr[j] = arr[j+1];
-             arr[j+1] = temp;
-          }
-      }
-    }
+   for(int i = 0; i < n; i++)
+   {
+      cin >> arg[i];
+   }
 
-    for(int i =0; i < n; i++) {
-       cout << arr[i] << " ";
-    }
+   for(int i = 0; i < n; i++)
+   {
+     for(int j = 0; j < n-i-1; j++)
+     {
+        if(arg[j] >= arg[j+1])
+        {
+            int temp = arg[j];
+            arg[j] = arg[j+1];
+            arg[j+1] = temp;
+        }
+     }
+   }
+
+    for(int i = 0; i < n; i++)
+   {
+      cout << arg[i] << endl;
+   }
+
+
 
     return 0;
 }
